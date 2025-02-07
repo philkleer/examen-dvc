@@ -7,7 +7,7 @@ print(joblib.__version__)
 print('Training model ... ')
 
 X_train = pd.read_csv('data/processed_data/normalized/X_train_scaled.csv')
-y_train = pd.read_csv('data/processed_data/y_train.csv')
+y_train = pd.read_csv('data/processed_data/splitted/y_train.csv')
 y_train = np.ravel(y_train)
 
 # loading best model parameters

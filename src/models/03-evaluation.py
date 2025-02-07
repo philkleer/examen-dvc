@@ -9,7 +9,7 @@ print(joblib.__version__)
 print('Predicting on test data ...')
 
 X_test = pd.read_csv('data/processed_data/normalized/X_test_scaled.csv')
-y_test = pd.read_csv('data/processed_data/y_test.csv')
+y_test = pd.read_csv('data/processed_data/splitted/y_test.csv')
 y_test = np.ravel(y_test)
 
 # loading best model parameters
