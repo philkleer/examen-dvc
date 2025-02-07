@@ -7,7 +7,7 @@ import numpy as np
 print(joblib.__version__)
 print('Doing Grid Search ... ')
 
-X_train = pd.read_csv('data/processed_data/X_train_scaled.csv')
+X_train = pd.read_csv('data/processed_data/normalized/X_train_scaled.csv')
 y_train = pd.read_csv('data/processed_data/y_train.csv')
 y_train = np.ravel(y_train)
 

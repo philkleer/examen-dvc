@@ -8,7 +8,7 @@ from pathlib import Path
 print(joblib.__version__)
 print('Predicting on test data ...')
 
-X_test = pd.read_csv('data/processed_data/X_test_scaled.csv')
+X_test = pd.read_csv('data/processed_data/normalized/X_test_scaled.csv')
 y_test = pd.read_csv('data/processed_data/y_test.csv')
 y_test = np.ravel(y_test)
 
@@ -38,7 +38,7 @@ path.write_text(json.dumps(metrics))
 print(f'Scores have been successfully save in {path}.')
 
 # saving predictions
-pred_path = Path('./models/predictions.csv')
+pred_path = Path('./data/predictions.csv')
 pred_df = pd.DataFrame(y_pred, columns=['predictions'])
 pred_df.to_csv(pred_path, index=False)
 print(f'Predictions have been successfully saved in {pred_path}.')
