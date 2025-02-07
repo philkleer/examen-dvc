@@ -1,4 +1,18 @@
 stages:
+  split:
+    cmd: python src/data/01-data-splitting.py
+    deps:
+    - data/raw_data
+    - src/data/01-data-splitting.py
+    outs:
+    - data/processed_data/splitted
+  normalize:
+    cmd: python src/data/02-data-normalization.py
+    deps:
+    - data/processed_data/splitted
+    - src/data/02-data-normalization.py
+    outs:
+    - data/processed_data/normalized
   gridsearch:
     cmd: python src/models/01-grid-search.py
     deps:

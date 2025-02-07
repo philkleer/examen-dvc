@@ -1,13 +1,49 @@
 schema: '2.0'
 stages:
+  split:
+    cmd: python src/data/01-data-splitting.py
+    deps:
+    - path: data/raw_data
+      hash: md5
+      md5: 4483523a509921dc8e23608973f1385e.dir
+      size: 333772
+      nfiles: 2
+    - path: src/data/01-data-splitting.py
+      hash: md5
+      md5: 21c3f260c6647bc0a3eedf0b5f8d494f
+      size: 3872
+    outs:
+    - path: data/processed_data/splitted
+      hash: md5
+      md5: 29046786a0a6295059aa2845c07d3496.dir
+      size: 295687
+      nfiles: 4
+  normalize:
+    cmd: python src/data/02-data-normalization.py
+    deps:
+    - path: data/processed_data/splitted
+      hash: md5
+      md5: 29046786a0a6295059aa2845c07d3496.dir
+      size: 295687
+      nfiles: 4
+    - path: src/data/02-data-normalization.py
+      hash: md5
+      md5: 9f8e96cc2f848413ebec698523c3cfd0
+      size: 3770
+    outs:
+    - path: data/processed_data/normalized
+      hash: md5
+      md5: 290a39d57fd8257256d2abb4d5508da6.dir
+      size: 284256
+      nfiles: 2
   gridsearch:
     cmd: python src/models/01-grid-search.py
     deps:
     - path: data/processed_data
       hash: md5
-      md5: 9a2c3ee08c9a62d953a83efc4c7c03e6.dir
-      size: 579993
-      nfiles: 8
+      md5: a0adb62a3c24bbef991634b91f92812a.dir
+      size: 579943
+      nfiles: 6
     - path: src/models/01-grid-search.py
       hash: md5
       md5: e4166e7cb43ee121c30ddae3169d4c47
