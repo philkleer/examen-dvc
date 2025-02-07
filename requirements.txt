@@ -1,12 +1,8 @@
 # external requirements
 click
 logging
-# Sphinx
-# coverage
-# flake8
 pandas
 numpy 
 pathlib 
 scikit-learn
-# imbalanced-learn
 joblib
