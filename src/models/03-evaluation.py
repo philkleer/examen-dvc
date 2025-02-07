@@ -32,6 +32,13 @@ metrics = {
     'params': train_model.get_params()
 }
 
+# saving metrics
 path = Path('./metrics/scores.json')
 path.write_text(json.dumps(metrics))
 print(f'Scores have been successfully save in {path}.')
+
+# saving predictions
+pred_path = Path('./models/predictions.csv')
+pred_df = pd.DataFrame(y_pred, columns=['predictions'])
+pred_df.to_csv(pred_path, index=False)
+print(f'Predictions have been successfully saved in {pred_path}.')
