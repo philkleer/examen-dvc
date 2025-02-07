@@ -11,13 +11,13 @@ y_train = pd.read_csv('data/processed_data/y_train.csv')
 y_train = np.ravel(y_train)
 
 # loading best model parameters
-best_params = joblib.load('models/best_model_gridsearch.joblib').get_params() 
+best_params = joblib.load('models/best_params.pkl') 
 
 # training (again)
 best_model = Ridge(**best_params)  # Initialize model with best params
 best_model.fit(X_train, y_train)
 
 #--Save the trained model to a file
-model_filename = './models/trained_model.joblib'
+model_filename = './models/trained_model.pkl'
 joblib.dump(best_model, model_filename)
 print('Model trained and saved successfully.')

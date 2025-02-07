@@ -24,9 +24,9 @@ grid_search = GridSearchCV(ridge, param_grid, cv=5, scoring='neg_mean_squared_er
 grid_search.fit(X_train, y_train)
 
 #--Save the trained model to a file
-model_filename = './models/best_model_gridsearch.joblib'
+model_filename = './models/best_params.pkl'
 
 # Save best model
-joblib.dump(grid_search.best_estimator_, model_filename)
+joblib.dump(grid_search.best_estimator_.get_params(), model_filename)
 
-print('Model trained and saved successfully.')
+print('Parameters of best model saved successfully.')

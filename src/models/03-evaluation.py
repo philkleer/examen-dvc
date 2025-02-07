@@ -1,5 +1,4 @@
 import pandas as pd 
-from sklearn.linear_model import Ridge
 import joblib
 import numpy as np
 from sklearn.metrics import mean_squared_error, r2_score
@@ -14,10 +13,10 @@ y_test = pd.read_csv('data/processed_data/y_test.csv')
 y_test = np.ravel(y_test)
 
 # loading best model parameters
-best_model = joblib.load('models/trained_model.joblib') 
+train_model = joblib.load('models/trained_model.pkl') 
 
 # training (again)
-y_pred = best_model.predict(X_test)
+y_pred = train_model.predict(X_test)
 
 # model evaluation
 mse = mean_squared_error(y_test, y_pred)
@@ -30,7 +29,7 @@ print(f'Test R2: {r2:.4f}')
 metrics = {
     'mse': mse,
     'r2' : r2,
-    'params': best_model.get_params()
+    'params': train_model.get_params()
 }
 
 path = Path('./metrics/scores.json')
